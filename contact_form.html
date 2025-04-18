@@ -104,6 +104,7 @@
   // Save input data to sessionStorage on blur
   $('#contactForm input, #contactForm textarea').on('blur', function() {
     sessionStorage.setItem(this.id, this.value);
+    localStorage.setItem(this.id, this.value);
   });
 
   // Restore saved input data
