@@ -9,7 +9,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     if (storedUserData) {
         if (storedUserData.email === email && storedUserData.password === password) {
             alert('Login successful! Welcome ' + storedUserData.name);
-            window.location.href = "Index.html";  // You can change this URL to your dashboard or homepage
+            window.location.href = "index.html";  // You can change this URL to your dashboard or homepage
         } else {
             alert('invalid credentials. Please try again.');
         }
