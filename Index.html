@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <Title>Explore the World</Title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <div class ="main">
+        <div class="navbar" >
+            <div class="menu-toggle" id="menu-toggle">
+                &#9776;
+            </div>
+
+            <div class ="icon">
+                <h2 class="logo">See The World</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="Index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT US</a></li>
+                    <li><a href="MalaysiaPage.html">DESTINATION</a></li>
+                    <li><a href="contact_form.html">CONTACT US</a></li>
+                    <li><a href="feedback.html">FEEDBACK</a></li>
+                </ul>
+            </div>
+
+            <div class="search">
+                <input class="srch" type="search" id="search-input" placeholder="Type page here">
+                <button class="btn" id="search-btn">Search</button>
+            </div>
+            
+            <script>
+                document.getElementById("search-btn").addEventListener("click", function(event) {
+                    event.preventDefault(); // Prevent default button behavior
+                    
+                    // Get the search query from input
+                    var query = document.getElementById("search-input").value.trim().toLowerCase(); 
+                    
+                    if (query) {
+                        // Conditional redirect based on the input value
+                        if (query === "destination") {
+                            window.location.href = "MalaysiaPage.html"; 
+                        } else if (query === "home") {
+                            window.location.href = "index.html";
+                         } else if (query === "about") {
+                            window.location.href = "about.html";   
+                        } else if (query === "contact") {
+                              window.location.href = "contact_form.html";  
+                        } else if (query === "feedback") {
+                            window.location.href = "feedback.html"; 
+                        } else {
+                            alert("No page found for: " + query);
+                        }
+                    } else {
+                        alert("Please enter a valid search term.");
+                    }
+                });
+            </script>
+            
+            
+        
+        </div>
+        <div class="content">
+            <h1> G10 trv </h1>
+            <p class="par"><p class="par">What You’ll Find on Our Website: <br>
+                Destination Guides – Detailed travel guides featuring must-visit locations, top attractions, and travel itineraries.<br>
+                Travel Tips & Hacks – Essential advice on budgeting, packing, safety, and navigating different cultures.<br>
+                Cultural Highlights – Insights into traditions, festivals, local cuisines, and unique experiences from around the world.<br>
+                Photo Galleries & Videos – Stunning visuals to inspire your next journey.<br>
+                Interactive Maps & Planning Tools – Make travel planning easier with curated recommendations and real-time information.<br>   </p>
+
+                <button class="cn"><a href="login.html">JOIN US NOW !!!</a></button>
+
+                 <div class="login-container">
+                <h2>Login to Your Account</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="aaacb@123.mail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+                <p class="message">Don't have an account? <a href="register.html">Sign Up</a></p>
+                <p class="liw">Log in with</p>
+                <div class="social-box">
+                    <div class="icons">
+                        <a href="https://www.facebook.com/"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="https://www.instagram.com/"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="https://x.com/"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="https://myaccount.google.com/"><ion-icon name="logo-google"></ion-icon></a>
+                        <a href="https://www.skype.com/"><ion-icon name="logo-skype"></ion-icon></a>
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+                <div class="banner">
+                    <video autoplay loop muted class="video-bg">
+                        <source src="video/travelsc.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                
+                </div>
+                
+    </div>
+    <div class="rating-container">
+        <div id="rating-display">
+            <p id="customer-rating">Customer Rating: 5/5</p>
+            <p id="rating-description">"Amazing experience, will definitely recommend!"</p>
+        </div>
+        <script>
+            // Ratings array includes both the rating and description
+            const ratings = [
+                { rating: "5/5", description: "\"Amazing experience, will definitely recommend!\"" },
+                { rating: "4.5/5", description: "\"Great service, but could be improved in some areas.\"" },
+                { rating: "4/5", description: "\"Overall a good experience, but the wait time was long.\"" },
+                { rating: "3.5/5", description: "\"Decent, but not what I expected. Some improvements needed.\"" },
+                { rating: "3/5", description: "\"It was okay, but not great. Would consider alternatives next time.\"" },
+                { rating: "2.5/5", description: "\"Not bad, but some things were lacking. Not sure if I’ll return.\"" },
+                { rating: "2/5", description: "\"Disappointing experience. I expected more from the service.\"" },
+                { rating: "1.5/5", description: "\"Not satisfied. The quality did not meet my expectations.\"" },
+                { rating: "1/5", description: "\"Very poor. Would not recommend to anyone. Completely dissatisfied.\"" }
+            ];
+        
+            let currentRatingIndex = 0;
+        
+            function changeRating() {
+                currentRatingIndex = (currentRatingIndex + 1) % ratings.length; // Cycle through ratings
+                document.getElementById('customer-rating').innerText = "Customer Rating: " + ratings[currentRatingIndex].rating;
+                document.getElementById('rating-description').innerText = ratings[currentRatingIndex].description;
+            }
+        
+            setInterval(changeRating, 3000); // Change rating every 3 seconds
+        </script>
+    </div>
+
+        <!-- Footer  -->
+<footer>
+    <div class="footer-container">
+        <!-- Left section -->
+        <div class="footer-left">
+            <nav class="footer-links">
+                <a href="Index.html">Home</a>
+                <a href="about.html">ABOUT US</a>
+                <a href="MalaysiaPage.html">DESTINATION</a>
+                <a href="contact_form.html">CONTACT US</a>
+                <a href="feedback.html">FEEDBACK</a>
+            </nav>
+            <p class="footer-bottom">&copy; 2025 See The World. All rights reserved.</p>
+        </div>
+
+        <!-- Middle section -->
+        <div class="footer-middle">
+            <p><ion-icon name="location-outline"></ion-icon>Jalan Universiti, Bandar Barat, 31900 Kampar, Perak.</p>
+            <p><ion-icon name="call-outline"></ion-icon><strong>Phone:</strong> +05-468 8888</p>
+            <p><ion-icon name="mail-outline"></ion-icon> <strong>Email:</strong><strong>Email:</strong> <a href="https://www.utar.edu.my">ctheworld122@looklook.com</a></p>
+        </div>
+
+        <!-- Right section (About and Social Media) -->
+        <div class="footer-right">
+            <h3>Find us</h3>
+            <p>See The World :</p>
+            <div class="social-icons">
+                <a href="https://www.youtube.com/"><ion-icon name="logo-youtube"></ion-icon></a>
+                <a href="https://www.tiktok.com/"><ion-icon name="logo-tiktok"></ion-icon></a>
+                <a href="https://www.facebook.com/"><ion-icon name="logo-facebook"></ion-icon></a>
+                <a href="https://www.instagram.com/"><ion-icon name="logo-instagram"></ion-icon></a>
+                <a href="https://x.com/"><ion-icon name="logo-twitter"></ion-icon></a>
+                <a href="https://www.reddit.com/"><ion-icon name="logo-reddit"></ion-icon></a>
+            </div>
+        </div>
+    </div>
+
+</footer>
+</div>
+
+<div id="cookies" style="display:none;">
+    <p>This website uses cookies to ensure you get the best experience. 
+       <button id="cookies-btn">Accept</button></p>
+</div>
+<script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    menuToggle.addEventListener('click', () => {
+        menu.classList.toggle('active');
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/ionicons@5.4.0/dist/ionicons.js"></script>
+<script src="cookies.js"></script>
+<script src="login.js"></script>
+</body>
+</html>

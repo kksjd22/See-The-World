@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore Malaysia - See The World</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Background Image and Overlay */
+body {
+  background-color: #D3D3D3;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+}
+
+/* Brand: See the World */
+.navbar .brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-decoration: none;
+}
+
+/* Right-side nav links */
+.navbar .nav-links a {
+  color: #ffd700;
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.navbar .nav-links a:hover {
+  color: #ffffff;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #FFFFFF;
+  background-image: url('images/background.jpg'); /* Set background image */
+  background-size: cover; /* Make sure the image covers the entire section */
+  background-position: center; /* Center the image */
+  background-attachment: fixed; /* Keep the image fixed while scrolling */
+  overflow: hidden;
+}
+
+.hero__overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  z-index: 1; /* Ensure the overlay stays above the background */
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2; /* Make sure the content stays above the overlay */
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero__subtitle {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero__description {
+  font-size: 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Cuisine Section */
+.cuisine-section {
+  padding: 30px;
+  text-align: center;
+  border-radius: 12px;
+  background-color: #E5E4E2;
+  margin: 40px auto;
+}
+
+.cuisine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.cuisine-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.cuisine-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.cuisine-label {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: #f1c40f;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: rgb(211, 211, 101);
+  color: black;
+}
+
+/* Culture Slider */
+.culture-slider {
+  padding: 30px;
+  border-radius: 12px;
+  background-color: #fffef5;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  display: none;
+  flex: 0 0 100%;
+  text-align: center;
+  position: relative;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slide img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.slide-content {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.slider-dots {
+  margin-top: 10px;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background: white;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #cc0000;
+}
+
+/* Attractions */
+.attractions-section {
+  margin: 40px auto;
+  padding: 30px;  
+  border-radius: 12px;
+  background-color: #E5E4E2;
+}
+
+.attractions-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.attractions-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.attractions-content {
+  flex: 1;
+  text-align: center;
+}
+
+.attraction-categories {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.category {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 250px;
+}
+
+.category i {
+  font-size: 2rem;
+  color: #cc0000;
+  margin-bottom: 10px;
+}
+
+.footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+#scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ffe600;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 18px;
+  display: none;
+  cursor: pointer;
+}
+
+#scroll-to-top:hover {
+  background-color: #f4d58d;
+}
+
+@media (max-width: 768px) {
+  .attractions-container {
+    flex-direction: column;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Header with Updated Navbar -->
+  <header class="text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html" style="color: #ffd700;">See the World</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html" style="color: #ffd700;">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" href="about.html" style="color: #ffd700;">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="travel_packages.html" style="color: #ffd700;">Travel Packages</a></li>
+            <li class="nav-item"><a class="nav-link" href="MalaysiaPage.html" style="color: #ffd700;">Destination</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact_form.html" style="color: #ffd700;">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+      
+    <!-- Hero -->
+        <section class="hero">
+          <div class="hero__overlay"></div>
+          <div class="hero__content">
+            <h1 class="hero__subtitle">Explore Malaysia</h1>
+            <p class="hero__description">Discover Malaysia's unique blend of cuisines, culture and natural wonders.</p>
+          </div>
+        </section>
+
+  <!-- Cuisine -->
+  <section class="cuisine-section">
+    <h2>Cuisine</h2>
+    <div class="cuisine-grid">
+      <div class="cuisine-card">
+        <img src="images/MalayCuisinejpg.jpg" alt="Malay Cuisine">
+        <div class="cuisine-label">Malay Cuisine</div>
+      </div>
+      <div class="cuisine-card">
+        <img src="images/ChineseCuisine.jpg" alt="Chinese Cuisine">
+        <div class="cuisine-label">Chinese Cuisine</div>
+      </div>
+      <div class="cuisine-card">
+        <img src="images/IndianCuisine.jpg" alt="Indian Cuisine">
+        <div class="cuisine-label">Indian Cuisine</div>
+      </div>
+    </div>
+    <a href="MalaysiaFood.html" class="btn">Explore All Malaysia Cuisine</a>
+  </section>
+
+  <!-- Culture -->
+  <section class="culture-slider">
+    <h2>Culture & Festivals</h2>
+    <div class="slider-container">
+      <button class="nav-button prev" onclick="prevSlide()">&#171;</button>
+      <div class="slider">
+        <div class="slide active">
+          <img src="images/raya.jpeg" alt="Hari Raya">
+          <div class="slide-content"><h3>Hari Raya</h3></div>
+        </div>
+        <div class="slide">
+          <img src="images/newyear.jpeg" alt="Chinese New Year">
+          <div class="slide-content"><h3>Chinese New Year</h3></div>
+        </div>
+        <div class="slide">
+          <img src="images/diwali.jpeg" alt="Deepavali">
+          <div class="slide-content"><h3>Deepavali</h3></div>
+        </div>
+      </div>
+      <button class="nav-button next" onclick="nextSlide()">&#187;</button>
+      <div class="slider-dots">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+      </div>
+    </div>
+    <a href="MalaysiaCulture.html" class="btn">Explore All Malaysia Culture Festivals</a>
+  </section>
+
+  <!-- Attractions -->
+  <section class="attractions-section">
+    <div class="attractions-container">
+      <div class="attractions-image">
+        <img src="images/Attraction.jpg" alt="Attractions">
+      </div>
+      <div class="attractions-content">
+        <h2>Discover Malaysia's Attractions</h2>
+        <p>Explore stunning rainforests, vibrant cities, and rich historical landmarks across Malaysia.</p>
+        <div class="attraction-categories">
+          <div class="category">
+            <i class="fa fa-building"></i>
+            <h3>Urban</h3>
+            <p>Kuala Lumpur, Penang, Malacca</p>
+          </div>
+          <div class="category">
+            <i class="fa fa-tree"></i>
+            <h3>Nature</h3>
+            <p>Borneo Rainforest, Cameron Highlands</p>
+          </div>
+          <div class="category">
+            <i class="fa fa-university"></i>
+            <h3>Cultural</h3>
+            <p>Temples, heritage sites, and more</p>
+          </div>
+        </div>
+        <a href="MalaysiaAttractions.html" class="btn">Explore All Attractions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scroll to Top -->
+  <button id="scroll-to-top" onclick="topFunction()">↑</button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 See the World. All Rights Reserved.</p>
+    <p>Jalan Universiti, Bandar Barat, 31900 Kampar, Perak</p>
+    <p>Phone: +05-468 8888 | Email: <a href="mailto:ctheworld122@looklook.com" style="color: #ffd700;">ctheworld122@looklook.com</a></p>
+  </footer>
+
+  <script>
+    // Scroll to top
+    window.onscroll = function () {
+      const btn = document.getElementById("scroll-to-top");
+      btn.style.display = document.documentElement.scrollTop > 100 ? "block" : "none";
+    };
+
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    // Slider Logic
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+
+    function showSlide(n) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === n);
+        dots[i].classList.toggle("active", i === n);
+      });
+      currentSlideIndex = n;
+    }
+
+    function prevSlide() {
+      const newIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+      showSlide(newIndex);
+    }
+
+    function nextSlide() {
+      const newIndex = (currentSlideIndex + 1) % slides.length;
+      showSlide(newIndex);
+    }
+
+    function goToSlide(index) {
+      showSlide(index);
+    }
+
+    setInterval(nextSlide, 5000);
+    document.addEventListener("DOMContentLoaded", () => showSlide(0));
+  </script>
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Travel Packages - See the World</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome for Social Icons and Star Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      position: relative;
+      z-index: 1;
+      color: white;
+      font-family: 'Quicksand', sans-serif;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.75);
+    }
+
+    /* Background video remains as is */
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    /* Navbar styling */
+    .navbar, .bg-dark {
+      background-color: rgba(0, 0, 0, 0.8) !important;
+    }
+
+    /* Content overlay for readability */
+    .content-overlay {
+      background: rgba(0,0,0,0.6);
+      padding: 30px;
+      border-radius: 8px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* Section headings */
+    h2, h3 {
+      color: #f4d58d;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    h2.visible, h3.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Card styling */
+    .card {
+      background-color: rgba(0, 0, 0, 0.88);
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+      height: 100%;
+    }
+    .card:hover {
+      transform: scale(1.02);
+    }
+    .card-title {
+      font-weight: 600;
+      color: #fad12b;
+    }
+
+    /* Back Button styling */
+    .back-btn {
+      background-color: blue;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 20px auto;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      width: fit-content;
+      font-size: 16px;
+    }
+
+    /* Footer Social Icons */
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 24px;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: #ffd700;
+    }
+
+    /* Scroll to top button */
+    #scroll-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #ffe600;
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 50%;
+      padding: 10px;
+      font-size: 18px;
+      display: none;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+    }
+    #scroll-to-top:hover {
+      background-color: #f4d58d;
+    }
+
+    /* Loader Animation */
+    #loader {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #c89b3c;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      z-index: 9999;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loader Animation -->
+  <div id="loader"></div>
+
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="video/13446087_3840_2160_60fps.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="overlay"></div>
+
+  <!-- Header with Navbar -->
+  <header class="text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html" style="color:#ffd700;">See the World</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html" style="color:#ffd700;">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html" style="color:#ffd700;">About Us</a></li>
+            <li class="nav-item"><a class="nav-link active" href="travel_packages.html" style="color:#ffd700;">Travel Packages</a></li>
+            <li class="nav-item"><a class="nav-link" href="MalaysiaPage.html" style="color:#ffd700;">Destination</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact_form.html" style="color:#ffd700;">Contact US</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content with Overlay Background -->
+  <section class="container my-4 content-overlay">
+    <h2>Travel Packages</h2>
+    <p class="lead text-center">
+      Explore our carefully curated travel packages designed to offer you unforgettable experiences.
+    </p>
+    
+    <!-- Cards for Malaysian Tourist Attractions -->
+    <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
+      
+      <!-- 1. Genting Highlands -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="images/genting.jpg" class="card-img-top" alt="Genting Highlands" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Genting Highlands</h5>
+            <!-- Rating and Booked Times -->
+            <p class="mb-1">
+              <span style="color: #fbc02d;">
+                <i class="fas fa-star"></i> 4.4
+              </span> 
+              (13k+ booked)
+            </p>
+            <!-- Price -->
+            <p class="mb-2">
+              RM 53
+            </p>
+            <!-- Short Description -->
+            <p class="card-text">
+              A thrilling mountaintop resort known for its cool climate, theme parks, shopping, and vibrant casinos.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Sunway Lagoon -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="images/sunway lagoon.jpg" class="card-img-top" alt="Sunway Lagoon" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Sunway Lagoon</h5>
+            <p class="mb-1">
+              <span style="color: #fbc02d;">
+                <i class="fas fa-star"></i> 4.6
+              </span> 
+              (25k+ booked)
+            </p>
+            <p class="mb-2">
+              RM 88
+            </p>
+            <p class="card-text">
+              A premier theme park in Selangor featuring water rides, wildlife encounters, and extreme adventures.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Semporna -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="images/semporna.jpg" class="card-img-top" alt="Semporna" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Semporna</h5>
+            <p class="mb-1">
+              <span style="color: #fbc02d;">
+                <i class="fas fa-star"></i> 4.3
+              </span> 
+              (18k+ booked)
+            </p>
+            <p class="mb-2">
+              RM 190
+            </p>
+            <p class="card-text">
+              Dive into the crystal-clear waters of Semporna, Sabah – a tropical paradise known for world-class snorkeling and diving spots, vibrant marine life, and serene island getaways like Sipadan and Mabul.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 4. Batu ferringhi -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="images/batu ferringhi.jpg" class="card-img-top" alt="Batu Ferringhi" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Batu Ferringhi</h5>
+            <p class="mb-1">
+              <span style="color: #fbc02d;">
+                <i class="fas fa-star"></i> 4.5
+              </span> 
+              (8k+ booked)
+            </p>
+            <p class="mb-2">
+              RM 99
+            </p>
+            <p class="card-text">
+              Relax and unwind at Batu Ferringhi, Penang’s most famous beach escape. From golden sands and thrilling water sports to vibrant night markets and local street food, it's the perfect blend of fun and culture by the sea
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 5. Petronas Twin Towers Tour -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="images/Petronas Twin Towers Tour.jpg" class="card-img-top" alt="Petronas Twin Towers" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Petronas Twin Towers Tour</h5>
+            <p class="mb-1">
+              <span style="color: #fbc02d;">
+                <i class="fas fa-star"></i> 4.7
+              </span> 
+              (10k+ booked)
+            </p>
+            <p class="mb-2">
+              RM 35
+            </p>
+            <p class="card-text">
+              Ascend the iconic Twin Towers in Kuala Lumpur for breathtaking skyline views and an immersive city experience.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Malacca Historical City Tour -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="images/Malacca Historical City Tour.jpg" class="card-img-top" alt="Malacca City Tour" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Malacca Historical City Tour</h5>
+            <p class="mb-1">
+              <span style="color: #fbc02d;">
+                <i class="fas fa-star"></i> 4.4
+              </span>
+              (6k+ booked)
+            </p>
+            <p class="mb-2">
+              RM 45
+            </p>
+            <p class="card-text">
+              Explore the UNESCO World Heritage site with visits to Dutch Square, Jonker Street, and centuries-old temples.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Langkawi Island Hopping -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="images/langkawi island.jpg" class="card-img-top" alt="Langkawi Island Hopping" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Langkawi Island Hopping</h5>
+            <p class="mb-1">
+              <span style="color: #fbc02d;">
+                <i class="fas fa-star"></i> 4.6
+              </span>
+              (12k+ booked)
+            </p>
+            <p class="mb-2">
+              RM 60
+            </p>
+            <p class="card-text">
+              Cruise between beautiful islands, visit eagle-feeding spots, and relax on pristine beaches around Langkawi.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Mount Kinabalu -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="images/kinabalumount.jpg" class="card-img-top" alt="Mount Kinabalu" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Mount Kinabalu</h5>
+            <p class="mb-1">
+              <span style="color: #fbc02d;">
+                <i class="fas fa-star"></i> 4.8
+              </span> 
+              (9k+ booked)
+            </p>
+            <p class="mb-2">
+              RM 50
+            </p>
+            <p class="card-text">
+              Challenge yourself with an unforgettable climb up Mount Kinabalu, the highest peak in Southeast Asia. Surrounded by lush rainforests and breathtaking views, it's a true adventure for nature lovers and hikers alike.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 9. Penang Escape Park -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="images/escape park.jpg" class="card-img-top" alt="Penang Escape Park" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Penang Escape Park</h5>
+            <p class="mb-1">
+              <span style="color: #fbc02d;">
+                <i class="fas fa-star"></i> 4.8
+              </span> 
+              (10k+ booked)
+            </p>
+            <p class="mb-2">
+              RM 70
+            </p>
+            <p class="card-text">
+              Experience adrenaline-pumping fun at Escape Park Penang — Malaysia’s top adventure theme park. Zip through treetops, conquer obstacle courses, and enjoy gravity-defying water slides in a lush natural setting
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back Button -->
+  <div class="text-center">
+    <button class="back-btn" onclick="history.back()">Back</button>
+  </div>
+
+  <!-- Scroll to Top Button -->
+  <button id="scroll-to-top" title="Go to top">&#8593;</button>
+
+  <!-- Footer with Social Media Icons -->
+  <footer class="bg-dark text-white text-center p-3">
+    <div class="container">
+      <p>&copy; 2025 See the World. All Rights Reserved.</p>
+      <p>Jalan Universiti, Bandar Barat, 31900 Kampar, Perak.</p>
+      <p>Phone: +05-468 8888</p>
+      <p>Email: <a href="mailto:ctheworld122@looklook.com" class="text-white">ctheworld122@looklook.com</a></p>
+      <div class="social-icons mt-3">
+        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Show/hide scroll-to-top button
+    window.onscroll = function() {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("scroll-to-top").style.display = "block";
+      } else {
+        document.getElementById("scroll-to-top").style.display = "none";
+      }
+    };
+
+    // Scroll to top on button click
+    document.getElementById("scroll-to-top").onclick = function() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    // Animate headings and hide loader once page is fully loaded
+    window.onload = function() {
+      const headings = document.querySelectorAll('h2, h3');
+      headings.forEach(heading => {
+        heading.classList.add('visible');
+      });
+      document.getElementById('loader').style.display = 'none';
+    };
+  </script>
+  
+</body>
+
+</html>

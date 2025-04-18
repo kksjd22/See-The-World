@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Malaysia Culture Festivals - See The World</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+/* ============================== */
+/* 1. BASE STYLES & TYPOGRAPHY   */
+/* ============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: url('images/BG(3).jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text, #f2f2f2);
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+  background-color: var(--light-bg, #f5f5f5);
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================== */
+/* 2. OVERLAY                     */
+/* ============================== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Reduce opacity */
+  z-index: -1;
+}
+
+/* ============================== */
+/* 3. NAVBAR                      */
+/* ============================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+}
+
+.navbar .brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-decoration: none;
+}
+
+.navbar .nav-links a {
+  color: #ffd700;
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.navbar .nav-links a:hover {
+  color: #ffffff;
+}
+
+/* ============================== */
+/* 4. SLIDESHOW                   */
+/* ============================== */
+.slideshow {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.fade {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ============================== */
+/* 5. CULTURE SECTIONS            */
+/* ============================== */
+.culture-section {
+  padding: 4rem 0;
+  background: none; /* Remove the white background */
+}
+
+.culture-section:nth-child(even) {
+  background: none; /* Same here, removes the background for even sections */
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #ffffff; /* White color for more visibility */
+  margin-bottom: 3rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background-color: #ffd700; /* Bright yellow for contrast */
+}
+
+/* ============================== */
+/* 6. CAROUSEL / FESTIVAL CARDS  */
+/* ============================== */
+.carousel-container {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.carousel-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.carousel-container::-webkit-scrollbar-thumb {
+  background: var(--primary-light, #77b5d9);
+  border-radius: 10px;
+}
+
+.festival-card {
+  flex: 0 0 350px;
+  scroll-snap-align: start;
+  background-color: var(--card-bg, #fff);
+  border-radius: var(--border-radius, 12px);
+  overflow: hidden;
+  box-shadow: var(--shadow, 0 4px 12px rgba(0, 0, 0, 0.1));
+  transition: var(--transition, 0.3s ease);
+}
+
+.festival-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.festival-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Title (h3) inside festival cards */
+.festival-card h3 {
+  font-size: 1.5rem;
+  color: #003366; /* Dark Blue color for the title */
+  font-weight: bold; /* Adding bold for better emphasis */
+  padding: 1rem 1.5rem 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Paragraph (p) inside festival cards */
+.festival-card > p {
+  color: #1a1a1a; /* Dark gray color for the body text */
+  padding: 0 1.5rem 1.5rem;
+  font-size: 1rem;
+}
+
+/* Full text and short text blocks */
+.short-text,
+.full-text {
+  padding: 0 1.5rem 1.5rem;
+}
+
+.full-text {
+  display: none;
+}
+
+.full-text p,
+.full-text ul {
+  margin-bottom: 1rem;
+}
+
+.full-text li {
+  margin-bottom: 0.5rem;
+}
+
+/* Modify text colors for short-text and full-text sections */
+.short-text p,
+.full-text p,
+.full-text ul {
+  color: #333333; /* Medium gray for full and short text */
+}
+
+/* Read More Button */
+.read-more-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary, #006699);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0 1.5rem 1.5rem;
+  transition: var(--transition, 0.3s ease);
+}
+
+.read-more-btn:hover {
+  background-color: var(--primary-light, #77b5d9);
+  transform: translateY(-2px);
+}
+
+/* ============================== */
+/* 7. FOOTER                      */
+/* ============================== */
+footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* ============================== */
+/* 8. SCROLL TO TOP BUTTON        */
+/* ============================== */
+#scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ffe600;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 18px;
+  display: none;
+  cursor: pointer;
+}
+
+#scroll-to-top:hover {
+  background-color: #f4d58d;
+}
+
+/* ============================== */
+/* 9. RESPONSIVE BREAKPOINTS      */
+/* ============================== */
+@media (max-width: 992px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .festival-card {
+    flex: 0 0 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .slideshow {
+    height: 50vh;
+  }
+
+  .festival-card {
+    flex: 0 0 280px;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .slideshow {
+    height: 40vh;
+    min-height: 300px;
+  }
+
+  .festival-card {
+    flex: 0 0 260px;
+  }
+}
+
+    </style>
+</head>
+<body>
+
+        <div class="overlay"></div>
+      
+  <!-- Header with Updated Navbar -->
+  <header class="text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html" style="color: #ffd700;">See the World</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html" style="color: #ffd700;">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" href="about.html" style="color: #ffd700;">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="travel_packages.html" style="color: #ffd700;">Travel Packages</a></li>
+            <li class="nav-item"><a class="nav-link" href="MalaysiaPage.html" style="color: #ffd700;">Destination</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact_form.html" style="color: #ffd700;">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+    <main>
+        <!-- Chinese Festivals -->
+        <section class="culture-section">
+            <div class="container">
+                <h2 class="section-title">Chinese Cultural Festivals in Malaysia</h2>
+                <div class="carousel-container">
+                    <div class="festival-card">
+                        <img src="images/CNY.jpg" alt="Chinese New Year">
+                        <h3>Chinese New Year</h3>
+                        <p>Chinese New Year in Malaysia is a vibrant celebration blending traditional customs...</p>
+                        <div class="short-text">
+                            <p>Chinese New Year in Malaysia is a vibrant and joyous celebration that blends traditional customs
+                                with modern touches. The festival, also known as the <strong>Lunar New Year</strong>, typically
+                                <strong>falls between late January and mid-February and lasts for 15 days</strong>.
+                            </p>
+                        </div>
+                        <div class="full-text">
+                            <p>The celebration is marked by various customs and rituals, including:</p>
+                            <ul>
+                                <li><strong>Family reunions</strong></li>
+                                <li><strong>Lion dances</strong></li>
+                                <li><strong>Fireworks</strong></li>
+                                <li><strong>Exchange of red envelopes (ang pao)</strong> filled with money</li>
+                            </ul>
+
+                            <p>The celebration begins with a grand <strong>reunion dinner</strong> on New Year's Eve, where
+                                families gather to enjoy a lavish feast and strengthen their bonds. Food plays a central role
+                                in the festivities, with many dishes symbolizing prosperity, happiness, and good fortune.</p>
+                            <p>Some of the must-have foods during Chinese New Year in Malaysia include:</p>
+                            <ul>
+                                <li><strong>Yee Sang</strong>: A colorful salad with raw fish, vegetables, and various
+                                    sauces, symbolizing abundance and prosperity.</li>
+                                <li><strong>Steamed or boiled chicken</strong>: Symbolizes togetherness.</li>
+                                <li><strong>Whole fish</strong>: Represents abundance and is often served with the head and tail
+                                    intact to signify a good beginning and end.</li>
+                                <li><strong>Big prawns</strong>: Associated with happiness due to their Cantonese name sounding
+                                    like laughter.</li>
+                                <li><strong>Nian Gao</strong>: A sweet sticky rice cake that symbolizes progress and a better
+                                    year ahead.</li>
+                                <li><strong>Bak Kwa</strong>: Barbecued meat slices, a popular snack during the festive season.
+                                </li>
+                            </ul>
+                            <p>These dishes, along with many others, make Chinese New Year in Malaysia a delightful culinary
+                                experience, reflecting the rich cultural heritage and traditions of the Chinese community.</p>
+                        </div>
+                        <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+                    </div>
+                    <div class="festival-card">
+                        <img src="images/dongzi.jpg" alt="Dong Zhi Festival">
+                        <h3>Dong Zhi Festival</h3>
+                        <div class="short-text">
+                            <p>The Dongzhi Festival, also known as the <b>Tang Chek Festival</b> or <b>Winter Solstice
+                                    Festival</b>, is a significant celebration for the Chinese community in Malaysia. This
+                                festival typically <b>falls between December 21 and 23</b>, marking the <b>longest night of the
+                                    year</b> and the arrival of winter.</p>
+                        </div>
+                        <div class="full-text">
+                            <h4>Celebration and Traditions</h4>
+                            <p>In Malaysia, the Dongzhi Festival is a <b>time for family reunions and togetherness</b>. Some key
+                                aspects of the celebration include:</p>
+                            <ul>
+                                <li><b>Making and Eating Tangyuan (湯圓)</b>: These are <b>glutinous rice balls</b> served in a
+                                    <b>sweet syrup</b>. They symbolize <b>reunion and completeness</b>, with their round shape
+                                    representing <b>unity and harmony</b>. Tangyuan can be plain or filled with sweet fillings
+                                    like <b>sesame paste</b> or <b>peanut butter</b>, and are often colored <b>white and
+                                        pink</b> to signify <b>abundance and good luck</b>.
+                                </li>
+                                <li><b>Ancestor Worship</b>: Families gather to honor their ancestors and <b>pray for good
+                                        fortune in the coming year</b>.</li>
+                                <li><b>Lighting of Incense</b>: A traditional practice to enhance the festive atmosphere and
+                                    offer prayers.</li>
+                            </ul>
+        
+                            <p>The Dongzhi Festival is not just a cultural observance but also a time for families to come
+                                together, share a meal, and strengthen their bonds.</p>
+                        </div>                        <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+                    </div>
+                    <div class="festival-card">
+                        <img src="images/ChapGohMei.jpg" alt="Chap Goh Mei">
+                        <h3>Chap Goh Mei</h3>
+                        <div class="short-text">
+                            <p>Chap Goh Meh, also known as the <b>Lantern Festival</b> or <b>Chinese Valentine’s Day</b>, marks
+                                the
+                                <b>15th and final day of the Chinese New Year celebrations in Malaysia</b>. This festival is
+                                celebrated
+                                with much joy and festivity, particularly in cities like <b>Kuala Lumpur</b> and <b>Penang</b>.
+                            </p>
+                        </div>
+                        <div class="full-text">
+                            <h4>Key Traditions</h4>
+                            <ul>
+                                <li><b>Mandarin Orange Throwing Event</b>: Unmarried women write their names and contact details
+                                    on mandarin
+                                    oranges and throw them into rivers, lakes, or the sea, hoping to find a romantic partner.
+                                    Men then collect
+                                    these oranges, and it’s believed that this act can lead to new romantic connections. This
+                                    tradition is
+                                    especially popular in Penang, where competitions are held to see who can collect the most
+                                    oranges.</li>
+                                <li><b>Lantern Displays</b>: Homes and public spaces are adorned with red lanterns, symbolizing
+                                    prosperity and
+                                    good fortune. Lanterns are also released into the sky or floated on water, creating a
+                                    mesmerizing sight.</li>
+                                <li><b>Family Gatherings and Feasting</b>: Traditional foods like <b>Tangyuan (glutinous rice
+                                        balls)</b>
+                                    are enjoyed, symbolizing unity and completeness. The festival also includes <b>cultural
+                                        performances</b>,
+                                    <b>lion dances</b>, and <b>fireworks</b>, making it a lively and colorful celebration.
+                                </li>
+                            </ul>
+        
+                            <p>Chap Goh Meh is a vibrant end to the Chinese New Year festivities, bringing together family,
+                                tradition, and
+                                celebration in a memorable way.</p>
+                        </div>                        <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Indian Festivals -->
+        <section class="culture-section">
+            <div class="container">
+                <h2 class="section-title">Indian Cultural Festivals in Malaysia</h2>
+                <div class="carousel-container">
+                    <div class="festival-card">
+                        <img src="images/Thaipusam(1).jpg" alt="Thaipusam">
+                        <h3>Thaipusam</h3>
+                        <div class="short-text">
+                            <p><b>Thaipusam</b> is the biggest Tamil Hindu festival celebrated by the Tamil Hindu community on
+                                the <b>first full moon day</b> of the Tamil month of Thai. Thaipusam is derived from
+                                <b>Thai</b>, which means “10th,” and <b>pusam</b>, meaning “when the moon is at its brightest.”
+                            </p>
+                        </div>
+                        <div class="full-text">
+                            <p>The festival commemorates the time when <b>Goddess Parvati</b> gave <b>Murugan</b> a divine spear
+                                to defeat the demon <b>Soorapadman</b>.</p>
+        
+                            <p>During the festival, devotees carry decorated <b>Kavadi</b> with images of deities. This act is a
+                                way to:</p>
+                            <ul>
+                                <li>Express their appreciation</li>
+                                <li>Seek forgiveness</li>
+                                <li>Fulfill a vow</li>
+                            </ul>
+        
+                            <p><b>The Kavadi represents a physical burden that symbolizes:</b></p>
+                            <ul>
+                                <li>Seeking help from Lord Murugan</li>
+                                <li>Balancing a spiritual debt</li>
+                            </ul>
+        
+                            <p><b>In preparation, devotees cleanse their bodies through:</b></p>
+                            <ul>
+                                <li><b>fasting</b></li>
+                                <li><b>abstinence</b></li>
+                                <li>Maintaining a strict <b>vegetarian diet</b></li>
+                            </ul>
+        
+                            <p><b>Most devotees perform penance by:</b></p>
+                            <ul>
+                                <li>Carrying the Kavadi on their shoulders</li>
+                                <li>Holding <b>pal kodum</b> (milk pots) above their heads</li>
+                            </ul>
+        
+                            <p><b>Other acts of sacrifice include:</b></p>
+                            <ul>
+                                <li>Piercing skewers through the tongue and cheeks</li>
+                                <li>Carrying milk pots (typically done by women)</li>
+                                <li>Shaving children's heads</li>
+                                <li>Performing social services like distributing food and drinks to fellow devotees</li>
+                            </ul>
+                        </div>                        <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+                    </div>
+                    <div class="festival-card">
+                        <img src="images/Deepavali(1).jpg" alt="Deepavali">
+                        <h3>Deepavali</h3>
+                        <div class="short-text">
+                            <p><b>Deepavali</b>, also known as <b>Diwali</b> or <b>Dipawali</b>, means <b>row of lights</b>. The
+                                term “Deepa” translates to <b>lamp</b>, while “avail” means <b>row</b>. The festival symbolizes
+                                the inner light that protects from spiritual darkness and celebrates the <b>victory of light
+                                    over darkness</b> and <b>good over evil</b>.</p>
+                        </div>
+                        <div class="full-text">
+                            <p>Deepavali is associated with the story of the return of <b>Lord Rama</b> to Ayodhya after
+                                defeating the demon king <b>Ravana</b>. It is celebrated by Hindu communities over a period of
+                                <b>5 days</b>, with the main day typically falling on the <b>15th day</b> of the Hindu lunar
+                                month of <b>Ashvin</b>.
+                            </p>
+        
+                            <p><b>Key activities during Deepavali include:</b></p>
+                            <ul>
+                                <li>Cleaning the home and decorating with lights, <b>rangoli</b>, and <b>oil lamps</b>, which
+                                    symbolize the removal of negativity.</li>
+                                <li>Exchanging sweets and gifts to share happiness and strengthen family bonds.</li>
+                                <li>Setting off fireworks to symbolize the victory of light over darkness and good over evil.
+                                </li>
+                            </ul>
+                        </div>                        <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+                    </div>
+                    <div class="festival-card">
+                        <img src="images/Pongal(1).jpg" alt="Ponggal">
+                        <h3>Ponggal</h3>
+                        <div class="short-text">
+                            <p><b>Pongal</b> is a four-day harvest festival celebrated in <b>mid-January</b> during
+                                <b>Uttarayanam</b>, primarily by Tamil communities. This festival is a time to thank the
+                                <b>Sun</b>, <b>Mother Nature</b>, and various <b>farm animals</b>. It also marks the beginning
+                                of the Tamil month called <b>Thai</b>, and represents appreciation, happiness, and
+                                collaboration. The four days of Pongal are:
+                            </p>
+                        </div>
+                        <div class="full-text">
+                            <ul>
+                                <li><b>Bhogi</b> : On the first day, activities such as cleaning homes and lighting bonfires
+                                    symbolize discarding old belongings and embracing a <b>new beginning</b>.</li>
+                                <li><b>Thai Pongal</b> : The second day is the main day of the festival. Families cook
+                                    traditional Pongal dishes in a <b>clay pot</b>, symbolizing the bounty of the harvest. The
+                                    dish is then offered to the <b>Sun God</b> as an expression of gratitude for the prosperity
+                                    received.</li>
+                                <li><b>Maatu Pongal</b> : The third day is dedicated to the worship of <b>cattle</b>,
+                                    particularly <b>bulls</b> and <b>cows</b>. Activities include decorating cows and their
+                                    horns, ritual bathing, and processions.</li>
+                                <li><b>Kaanum Pongal</b> : The final day is reserved for <b>family outings</b> and spending time
+                                    together.</li>
+                            </ul>
+        
+                        </div>                        <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Malay Festivals -->
+        <section class="culture-section">
+            <div class="container">
+                <h2 class="section-title">Malay Culture Festivals</h2>
+                <div class="carousel-container">
+                    <div class="festival-card">
+                        <img src="images/Muharram.jpeg" alt="Awal Muharram">
+                        <h3>Awal Muharram</h3>
+                        <div class="short-text">
+                            <p>Muharram is the <strong>first month of the Islamic calendar</strong> and marks the beginning of
+                                the Islamic New Year. It holds major religious significance as <strong>one of Islam's four
+                                    sacred months</strong>.</p>
+                        </div>
+                        <div class="full-text">
+                            <p><b>The month is notable for several reasons:</b></p>
+                            <ul>
+                                <li>It corresponds to the early history of Islam, including the period when <strong>Prophet
+                                        Muhammad</strong> began teaching monotheism in Makkah.</li>
+                                <li>This period led to the persecution of early Muslims and their ultimate exodus, which became
+                                    a foundational event for the Islamic calendar.</li>
+                                <li>The name <strong>"Muharram"</strong> means "that which is made sacred" and it is often
+                                    referred to as <strong>God's Month</strong>.</li>
+                                <li>Fasting during Muharram is considered very meritorious, second only to fasting during
+                                    Ramadan.</li>
+                                <li>The month holds significant importance for the Shia sect of Islam.</li>
+                            </ul>
+                        </div>                        <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+                    </div>
+                    <div class="festival-card">
+                        <img src="images/Puasa.jpeg" alt="Hari Raya Aidilfitri">
+                        <h3>Hari Raya Aidilfitri</h3>
+                        <div class="short-text">
+                            <p>Hari Raya Aidilfitri also known as <strong>Eid Ul-Fitri</strong> in Malaysia, is one of the most
+                                significant Islamic festivals. It celebrates the <strong>last day of Ramadan</strong>, the
+                                Islamic holy month of fasting. The term translates to "day of celebration" in Malay and marks
+                                the sighting of the new moon before the month of <strong>Syawal</strong>.</p>
+                        </div>
+                        <div class="full-text">
+                            <p>The celebration is a time for reflecting on <strong>beliefs</strong>, <strong>respect</strong>,
+                                and <strong>forgiveness</strong> with family and friends.</p>
+                            <p><b>Key customs include:</b></p>
+                            <ul>
+                                <li><strong>'Balik kampung'</strong>: Returning to hometowns to be with family.</li>
+                                <li><strong>'Duit Raya'</strong>: Distributing money in green packets as a sign of wealth and
+                                    goodwill.</li>
+                                <li><strong>'Beraya'</strong>: Visiting close friends and family to seek forgiveness and
+                                    enjoyment.</li>
+                            </ul>
+        
+                            <p>The festivities often start with a special <strong>prayer in the mosque</strong>. This is
+                                followed by visits to graves to pray for departed loved ones and reunions with family and
+                                friends to exchange good wishes.</p>
+                        </div>                        <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+                    </div>
+                    <div class="festival-card">
+                        <img src="images/Haji.jpg" alt="Hari Raya Haji">
+                        <h3>Hari Raya Haji</h3>
+                        <div class="short-text">
+                            <p>Hari Raya Haji, also known as <strong>al-Adha</strong>, is an important Islamic celebration that
+                                honors the pilgrimage (<strong>Hajj</strong>) to Mecca and commemorates <strong>Prophet
+                                    Ibrahim's (a.s.)</strong> willingness to sacrifice his son, <strong>Prophet Ismail
+                                    (a.s.)</strong>, in devotion to Allah. The event takes place on the <strong>tenth day of
+                                    Zulhijjah</strong>, the last month of the Islamic calendar.</p>
+                        </div>
+                        <div class="full-text">
+                            <p><b>The celebration is marked by:</b></p>
+                            <ul>
+                                <li>The <strong>sacrifice of animals</strong>, such as cows or goats, with the meat distributed
+                                    to the <strong>less fortunate</strong>.</li>
+                                <li>Remembering the historical significance of <strong>Prophet Adam</strong> and
+                                    <strong>Hawa's</strong> reunion in the valley of <strong>Arafah</strong>.
+                                </li>
+                            </ul>
+        
+                            <p>Hari Raya Haji underscores the values of <strong>religious belief</strong>,
+                                <strong>hope</strong>, and <strong>loyalty</strong> in Islam.
+                            </p>
+                            <p><b>The observance includes:</b></p>
+                            <ul>
+                                <li>Wearing <strong>colorful clothes</strong>.</li>
+                                <li>Performing the <strong>Hari Raya Sunnah prayer</strong>.</li>
+                                <li>Reflecting on the <strong>religious journey of Hajj</strong>.</li>
+                            </ul>
+                        </div>                        <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scroll to Top -->
+<button id="scroll-to-top" onclick="topFunction()">↑</button>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2025 See the World. All Rights Reserved.</p>
+  <p>Jalan Universiti, Bandar Barat, 31900 Kampar, Perak</p>
+  <p>Phone: +05-468 8888 | Email: <a href="mailto:ctheworld122@looklook.com" style="color: #ffd700;">ctheworld122@looklook.com</a></p>
+</footer>
+
+    <script>
+  // Scroll to top
+  window.onscroll = function () {
+    const btn = document.getElementById("scroll-to-top");
+    btn.style.display = document.documentElement.scrollTop > 100 ? "block" : "none";
+  };
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+        // Read More functionality
+        function toggleReadMore(button) {
+            const card = button.closest('.festival-card');
+            const shortText = card.querySelector('.short-text');
+            const fullText = card.querySelector('.full-text');
+            
+            if (fullText.style.display === 'block') {
+                fullText.style.display = 'none';
+                shortText.style.display = 'block';
+                button.textContent = 'Read More';
+            } else {
+                fullText.style.display = 'block';
+                shortText.style.display = 'none';
+                button.textContent = 'Read Less';
+            }
+        }
+
+        // Simple slideshow functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('fade'));
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('fade');
+        }
+        
+        // Auto slide change
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+    </script>
+</body>
+</html>

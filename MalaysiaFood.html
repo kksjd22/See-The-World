@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Discover Malaysian Cuisine - See The World</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>  
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Background Image and Overlay */
+body {
+  background: url('images/BG(1).jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #f2f2f2;
+  position: relative;
+  height: 100vh; /* Ensure the body takes full height */
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Overlay for dark effect on background */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1; /* Keeps overlay behind the content */
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+}
+
+/* Brand: See the World */
+.navbar .brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-decoration: none;
+}
+
+/* Right-side nav links */
+.navbar .nav-links a {
+  color: #ffd700;
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.navbar .nav-links a:hover {
+  color: #ffffff;
+}
+
+/* Footer */
+footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+
+  /* Typography */
+  h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  h2 {
+    color: #f4d58d;
+    border-bottom: 2px solid #f4d58d;
+    padding-bottom: 0.3rem;
+    margin-top: 3rem;
+    text-align: center;
+  }
+  
+  h3 {
+    margin-top: 0.3em;
+    color: #D62828;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+  
+  /* Content Container */
+  .tab-content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem;
+  }
+  
+  /* Card Layout */
+  .card {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.88);
+    color: #222;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  .card img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+  }
+  
+  .card div {
+    padding: 1rem 1.5rem;
+  }
+  
+  /* Scroll to Top Button */
+  #scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffe600;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 18px;
+    display: none;
+    cursor: pointer;
+  }
+  
+  #scroll-to-top:hover {
+    background-color: #f4d58d;
+  }
+  
+  /* Responsive Media Queries */
+  @media (max-width: 768px) {
+    .card {
+      flex-direction: column;
+    }
+  
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+  
+    .card div {
+      width: 100%;
+    }
+  
+    .attractions-container {
+      flex-direction: column;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .card {
+      flex-direction: row;
+    }
+  
+    .card img {
+      width: 40%;
+      height: auto;
+    }
+  
+    .card div {
+      width: 60%;
+    }
+  }
+  
+</style>
+</head>
+
+<body>
+  <div class="overlay"></div>
+
+  <!-- Header with Updated Navbar -->
+  <header class="text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html" style="color: #ffd700;">See the World</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html" style="color: #ffd700;">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" href="about.html" style="color: #ffd700;">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="travel_packages.html" style="color: #ffd700;">Travel Packages</a></li>
+            <li class="nav-item"><a class="nav-link" href="MalaysiaPage.html" style="color: #ffd700;">Destination</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact_form.html" style="color: #ffd700;">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+  <!-- Chinese Dishes -->
+  <section class="tab-content" aria-label="Chinese Dishes in Malaysia">
+    <h2>Chinese Dishes</h2>
+
+    <div class="card">
+      <img src="images/Bak Kut Teh.jpg" alt="A bowl of Bak Kut Teh served with rice and youtiao" />
+      <div>
+        <h3>Bak Kut Teh</h3>
+        <p>Bak Kut Teh (肉骨茶), or "pork bone tea," is a warming herbal soup made by simmering pork ribs with garlic, star anise, cinnamon, and medicinal herbs. It’s often paired with rice, tofu puffs, and crispy youtiao (fried dough sticks).</p>
+        <p>Originating from the Hokkien and Teochew communities, this dish was created to boost energy and immunity among Chinese laborers in early Malaya.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/prawn mee.jpg" alt="Spicy prawn mee soup with egg, pork slices, and noodles" />
+      <div>
+        <h3>Prawn Mee</h3>
+        <p>Prawn Mee (虾面), also known as Penang Hokkien Mee, is a fiery and aromatic noodle soup made with a broth of prawn shells and pork bones. It features yellow noodles, hard-boiled eggs, water spinach, and chili paste for a satisfying bite.</p>
+        <p>This dish is a breakfast staple in northern Malaysia, especially in Penang.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/hakka mee.jpg" alt="Bowl of Hakka Mee topped with minced pork and spring onions" />
+      <div>
+        <h3>Hakka Mee</h3>
+        <p>Hakka Mee is a humble dry noodle dish made of springy egg noodles tossed in garlic oil, soy sauce, and topped with seasoned minced pork. Often garnished with scallions and crispy shallots, it is a comfort food with strong Hakka roots.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Indian Dishes -->
+  <section class="tab-content" aria-label="Indian Dishes in Malaysia">
+    <h2>Indian Dishes</h2>
+
+    <div class="card">
+      <img src="images/masala dosa.jpg" alt="Crispy Masala Dosa with chutneys and sambar" />
+      <div>
+        <h3>Masala Dosa</h3>
+        <p>This South Indian delight is a thin fermented crepe made from rice and lentils, filled with mashed spiced potatoes. Served hot with coconut chutney and sambar, it’s a common sight at Indian eateries across Malaysia.</p>
+        <p>Vegetarian, gluten-free, and incredibly flavorful!</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/Roti-canai.jpg" alt="Flaky Roti Canai with dhal and curry" />
+      <div>
+        <h3>Roti Canai</h3>
+        <p>Roti Canai is a flaky, buttery flatbread with Indian-Muslim origins, served with dhal, fish curry, or sugar. It's cooked on a griddle and flipped theatrically. A must-try for breakfast or supper!</p>
+        <p>Variants include Roti Telur (with egg), Roti Pisang (banana), and Roti Boom (sweeter and thicker).</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/Kerala-Style-Chicken-Curry.jpg" alt="Keema Matar with naan" />
+      <div>
+        <h3>Keema Matar Masala</h3>
+        <p>Keema Matar is a rich minced meat curry cooked with green peas, onions, tomatoes, and aromatic spices. Best served with basmati rice, naan, or paratha.</p>
+        <p>This North Indian dish is also found in fusion forms inside curry puffs and stuffed buns in Malaysia.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Malay Dishes -->
+  <section class="tab-content" aria-label="Malay Dishes in Malaysia">
+    <h2>Malay Dishes</h2>
+
+    <div class="card">
+      <img src="images/Chicken Rendang.jpg" alt="Spiced Chicken Rendang garnished with coconut" />
+      <div>
+        <h3>Chicken Rendang</h3>
+        <p>A dry-style curry made by slow-cooking chicken in coconut milk, galangal, lemongrass, and a blend of ground spices. Rendang is often served during festive celebrations and weddings.</p>
+        <p>Originally from Minangkabau cuisine, it’s now beloved nationwide.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/Ketupat.jpeg" alt="Woven palm-leaf Ketupat rice cakes" />
+      <div>
+        <h3>Ketupat</h3>
+        <p>Ketupat is compressed rice cooked inside intricately woven palm leaves. It’s a symbolic and festive dish usually served with rendang, satay, or peanut sauce during Hari Raya and weddings.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/Nasi Lemak.jpg" alt="Nasi Lemak with sambal, anchovies, egg, and cucumber" />
+      <div>
+        <h3>Nasi Lemak</h3>
+        <p>Considered Malaysia’s national dish, Nasi Lemak features coconut milk rice accompanied by spicy sambal, crispy anchovies, peanuts, cucumber slices, and a hard-boiled egg. Optional sides include fried chicken, squid sambal, or rendang.</p>
+        <p>Commonly eaten for breakfast, but available all day at stalls and restaurants.</p>
+      </div>
+    </div>
+  </section>
+  
+<!-- Scroll to Top -->
+<button id="scroll-to-top" onclick="topFunction()">↑</button>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2025 See the World. All Rights Reserved.</p>
+  <p>Jalan Universiti, Bandar Barat, 31900 Kampar, Perak</p>
+  <p>Phone: +05-468 8888 | Email: <a href="mailto:ctheworld122@looklook.com" style="color: #ffd700;">ctheworld122@looklook.com</a></p>
+</footer>
+
+<script>
+  // Scroll to top
+  window.onscroll = function () {
+    const btn = document.getElementById("scroll-to-top");
+    btn.style.display = document.documentElement.scrollTop > 100 ? "block" : "none";
+  };
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+</body>
+</html>

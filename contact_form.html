@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - Explore the World</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    body {
+      background: #f9f9f9;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .contact-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .social-icons i {
+      font-size: 1.5rem;
+      margin: 0 10px;
+      color: #007bff;
+      transition: transform 0.3s;
+    }
+    .social-icons i:hover {
+      transform: scale(1.2);
+      color: #0056b3;
+    }
+    .navbar {
+    position: absolute;
+    top: 20px; 
+    left: 20px; 
+    z-index: 1000; 
+}
+
+.home-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.logo-img {
+    width: 40px; 
+    height: auto;
+    transition: transform 0.3s ease;
+}
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+        <a href="Index.html" class="home-btn">
+            <img src="images/home.png" alt="Home" class="logo-img">
+        </a>
+    </div>
+
+<div class="container my-5">
+  <div class="contact-container">
+    <h2 class="text-center mb-4">Contact Us </h2>
+   
+    <p class="text-center mb-4">
+      If you have any questions, feel free to reach out to us. We're here to assist you.</p>
+
+    <form id="contactForm">
+      <div class="mb-3">
+        <label for="name" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="name" placeholder="John Doe" required />
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="email" placeholder="example@email.com" required />
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input type="tel" class="form-control" id="phone" placeholder="011-11111111" required />
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Your Message</label>
+        <textarea class="form-control" id="message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Send Message</button>
+    </form>
+
+    <div class="text-center mt-4 social-icons">
+      <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.x.com/"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- JS Libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  // Save input data to sessionStorage on blur
+  $('#contactForm input, #contactForm textarea').on('blur', function() {
+    sessionStorage.setItem(this.id, this.value);
+  });
+
+  // Restore saved input data
+  $(document).ready(function() {
+    $('#contactForm input, #contactForm textarea').each(function() {
+      if (sessionStorage.getItem(this.id)) {
+        $(this).val(sessionStorage.getItem(this.id));
+      }
+    });
+  });
+
+  // Simulate form submission with fake RESTful API
+  $('#contactForm').submit(function(e) {
+    e.preventDefault();
+    const formData = {
+      name: $('#name').val(),
+      email: $('#email').val(),
+      message: $('#message').val()
+    };
+
+    // Simulate AJAX request
+    $.ajax({
+      url: 'https://jsonplaceholder.typicode.com/posts', // placeholder API
+      type: 'POST',
+      data: JSON.stringify(formData),
+      contentType: 'application/json; charset=UTF-8',
+
+      
+      success: function(response) {
+        alert('Thank you for contacting us! We’ll get back to you shortly.');
+        sessionStorage.clear(); // Clear stored data
+        $('#contactForm')[0].reset();
+      },
+      error: function() {
+        alert('Something went wrong. Please try again.');
+      }
+    });
+    window.location.href = "confirmation.html";
+  });
+
+  
+</script>
+<div id="cookies" style="display:none;">
+  <p>This website uses cookies to ensure you get the best experience. 
+     <button id="cookies-btn">Accept</button></p>
+</div>
+<script src="cookies.js"></script>
+</body>
+</html>

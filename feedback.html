@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - See The World</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+    <div class="main">
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="menu-toggle" id="menu-toggle">
+                &#9776;
+            </div>
+
+            <div class="icon">
+                <h2 class="logo">See The World</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT US</a></li>
+                    <li><a href="MalaysiaPage.html">DESTINATION</a></li>
+                    <li><a href="contact_form.html">CONTACT US</a></li>
+                    <li><a href="feedback.html">FEEDBACK</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content">
+            <h1>We Value Your Feedback</h1>
+            <p>Let us know your thoughts, suggestions, or any comments you may have.</p>
+        
+            <!-- Feedback Form with Icons -->
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name"><ion-icon name="person-outline"></ion-icon> Your Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email"><ion-icon name="mail-outline"></ion-icon> Your Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="feedback"><ion-icon name="chatbubble-ellipses-outline"></ion-icon> Your Feedback:</label>
+                    <textarea id="feedback" name="feedback" rows="4" placeholder="Enter your feedback" required></textarea>
+                </div>
+                <!-- Optional Rating System -->
+                <div class="rating">
+                    <label for="rating">Rate your experience:</label><br>
+                    <span class="star-rating">
+                        <input type="radio" name="rating" value="5" id="star5"><label for="star5">★</label>
+                        <input type="radio" name="rating" value="4" id="star4"><label for="star4">★</label>
+                        <input type="radio" name="rating" value="3" id="star3"><label for="star3">★</label>
+                        <input type="radio" name="rating" value="2" id="star2"><label for="star2">★</label>
+                        <input type="radio" name="rating" value="1" id="star1"><label for="star1">★</label>
+                    </span>
+                </div>
+                <button type="submit" class="btnn">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <nav class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">ABOUT US</a>
+                   <a href="MalaysiaPage.html">DESTINATION</a>
+                    <a href="contact_form.html">CONTACT US</a>
+                    <a href="feedback.html">FEEDBACK</a>
+                </nav>
+                <p class="footer-bottom">&copy; 2025 See The World. All rights reserved.</p>
+            </div>
+
+            <div class="footer-middle">
+                <p><ion-icon name="location-outline"></ion-icon> Jalan Universiti, Bandar Barat, 31900 Kampar, Perak.</p>
+                <p><ion-icon name="call-outline"></ion-icon> <strong>Phone:</strong> +05-468 8888</p>
+                <p><ion-icon name="mail-outline"></ion-icon> <strong>Email:</strong><a href="mailto:ctheworld122@looklook.com"> ctheworld122@looklook.com</a></p>
+            </div>
+
+            <div class="footer-right">
+                <h3>Find us</h3>
+                <p>See The World :</p>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/"><ion-icon name="logo-youtube"></ion-icon></a>
+                    <a href="https://www.tiktok.com/"><ion-icon name="logo-tiktok"></ion-icon></a>
+                    <a href="https://www.facebook.com/"><ion-icon name="logo-facebook"></ion-icon></a>
+                    <a href="https://www.instagram.com/"><ion-icon name="logo-instagram"></ion-icon></a>
+                    <a href="https://x.com/"><ion-icon name="logo-twitter"></ion-icon></a>
+                    <a href="https://www.reddit.com/"><ion-icon name="logo-reddit"></ion-icon></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.querySelector('.menu');
+    
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    </script>
+
+    <div id="cookies" style="display:none;">
+        <p>This website uses cookies to ensure you get the best experience. 
+           <button id="cookies-btn">Accept</button></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="cookies.js"></script>
+</body>
+</html>
