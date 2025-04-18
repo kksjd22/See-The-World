@@ -11,7 +11,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
             alert('Login successful! Welcome ' + storedUserData.name);
             window.location.href = "Index.html";  // You can change this URL to your dashboard or homepage
         } else {
-            alert('Invalid credentials. Please try again.');
+            alert('invalid credentials. Please try again.');
         }
     } else {
         alert('No user data found. Please sign up first.');
